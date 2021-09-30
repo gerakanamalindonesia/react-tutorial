@@ -1,18 +1,24 @@
 import {useState} from 'react'
 import './App.css';
-import Student from "./Student";
 
 function App() {
     const [name, setName] = useState("Default Name")
-  return (
-    <div className="App">
-        <Student name={name} email={"irwanto@yahoo.com"} address={{country: "Indonesia", province: "DIY"}} />
-        <Student name={"Rina"} email={"rina@yahoo.com"} address={{country: "Indonesia", province: "Bali"}} />
-        <Student name={"Ani"} email={"ani@gmail.com"} address={{country: "Indonesia", province: "Banten"}} />
-
-        <button onClick={() => {setName("Irwanto Wibowo")}}>Update Name</button>
-    </div>
-  );
+    const [print, setPrint] = useState(false)
+    function getValue(val) {
+        setName(val.target.value)
+        if(val.target.value.length === 0) {
+            setPrint(false)
+        }
+    }
+    return (
+        <div className="App">
+            {
+                print ? <h2>Name : {name}</h2> : null
+            }
+            <input type="text" onChange={getValue} />
+            <button onClick={() => setPrint(!print)}>Print Name</button>
+        </div>
+     );
 }
 
 export default App;
