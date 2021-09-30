@@ -2,21 +2,16 @@ import {useState} from 'react'
 import './App.css';
 
 function App() {
-    const [name, setName] = useState("Default Name")
-    const [print, setPrint] = useState(false)
-    function getValue(val) {
-        setName(val.target.value)
-        if(val.target.value.length === 0) {
-            setPrint(false)
-        }
-    }
+    const [status, setStatus] = useState(true)
     return (
         <div className="App">
             {
-                print ? <h2>Name : {name}</h2> : null
+                status ? <h1>Hello World</h1> : null
             }
-            <input type="text" onChange={getValue} />
-            <button onClick={() => setPrint(!print)}>Print Name</button>
+
+            {/*<button onClick={() => setStatus(false)}>Hide</button>*/}
+            {/*<button onClick={() => setStatus(true)}>Show</button>*/}
+            <button onClick={() => setStatus(!status)}>Toggle</button>
         </div>
      );
 }
