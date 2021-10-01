@@ -1,18 +1,14 @@
-import {useState} from 'react'
+import {useState, use} from 'react'
 import './App.css';
-import User from "./User";
-import Members from "./Members";
 
 function App() {
-    function getData() {
-        alert("Ini dibuat di App.js")
-    }
+    const [data, setData] = useState("Irwanto")
 
     return (
         <div className="App">
-            <User data={getData} />
             <div>
-                <Members data={getData} />
+                <h1>Hello {data}!</h1>
+                <button onClick={() => setData("Rina Pratama")}>Update</button>
             </div>
         </div>
     )
