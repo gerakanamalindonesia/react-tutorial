@@ -1,11 +1,19 @@
 import {useState} from 'react'
 import './App.css';
-import Register from "./Register";
+import User from "./User";
+import Members from "./Members";
 
 function App() {
+    function getData() {
+        alert("Ini dibuat di App.js")
+    }
+
     return (
         <div className="App">
-            <Register />
+            <User data={getData} />
+            <div>
+                <Members data={getData} />
+            </div>
         </div>
     )
 }
