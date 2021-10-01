@@ -1,34 +1,26 @@
 import {useState, useEffect} from 'react'
 import './App.css';
+import User from "./User";
 
 function App() {
+    const [data, setData] = useState(10)
     const [count, setCount] = useState(0)
-    const [name, setName] = useState("Irwanto")
-
-    // useEffect berjalan setelah render
-    useEffect(() => {
-        console.log("useEffect berjalan pada count ke - " + count)
-    }, [count]) // perbedaan array kosong dan ada isinya yaitu jika array kosong maka useEffect hanya berjalan sekali, namun jika ada isinya maka useEffect akan berjalan setiap kali isi array berubah
 
     useEffect(() => {
-        console.log("useEffect name berjalan " + name)
-    }, [name])
+        console.log("useEffect data with data " + data)
+    }, [data])
+
+    useEffect(() => {
+        console.log("useEffect count with count " + count)
+    }, [count])
 
     return (
         <div className="App">
-            <div>
-                <h1>useEffect in React</h1>
-                <div>{count}</div>
-                <button onClick={() => setCount(count + 1)}>Update Counter</button>
 
-                <div>
-                    <h3>Hello {name}!!</h3>
-                    <form>
-                        <input type="text" onChange={(e) => setName(e.target.value)} />
-                        <button type="submit">Ubah</button>
-                    </form>
-                </div>
-            </div>
+            <User count = {count} data = {data} />
+
+            <button onClick={() => setCount(count + 1)} >Update Count</button>
+            <button onClick={() => setData(data + 1)} >Update Data</button>
         </div>
     )
 }

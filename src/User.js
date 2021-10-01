@@ -1,8 +1,14 @@
+import {useState, useEffect} from 'react'
+
 function User(props) {
+    useEffect(() => {
+        console.log("Count is", props.count)
+    }, [props.count, props.data])
+
     return (
-        <div>
-            <h2>Mengirim function sebagai props</h2>
-            <button onClick={props.data}>Call data function</button>
+        <div className="App">
+            <h1>Count : {props.count}</h1>
+            <h1>Data : {props.data}</h1>
         </div>
     )
 }
