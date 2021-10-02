@@ -1,34 +1,37 @@
 import {useState, useEffect} from 'react'
-import {Button, Alert} from 'react-bootstrap'
 import './App.css';
-import User from "./User";
-
+import Employee from "./Employee";
 function App() {
+    const employees = ["Rina", "Pratama", "Prasetyawati", "Irwanto", "Wibowo"]
+
+    const students = [
+        {name: "Irwanto", address: "Yogyakarta", contact: 7328292},
+        {name: "Wibowo", address: "Bantul", contact: 7328290    },
+        {name: "Rina", address: "Sleman", contact: 7328291},
+        {name: "Pratama", address: "Gunungkidul", contact: 7328293},
+    ]
+
     return (
         <div className="App">
-            <h1>Bootstrap</h1>
-            <div style={{marginBottom: '10px'}}>
-                <Button variant="warning" onClick={() => {alert("Mantabb, kamu sah selesai")}}>Click</Button>
-            </div>
-
-            <div>
-                {
-                    [
-                        'primary',
-                        'secondary',
-                        'success',
-                        'danger',
-                        'warning',
-                        'info',
-                        'light',
-                        'dark'
-                    ].map((variant, idx) => (
-                        <Alert key={idx} variant={variant}>
-                            Ini adalah alert dengan tipe {variant}
-                        </Alert>
-                    ))
-                }
-            </div>
+            <h1>Students : </h1>
+            <table border='1'>
+                <thead>
+                    <th>Name</th>
+                    <th>Address</th>
+                    <th>Contact</th>
+                </thead>
+                <tbody>
+                    {
+                        students.map(data =>
+                            <tr>
+                                <td>{data.name}</td>
+                                <td>{data.address}</td>
+                                <td>{data.contact}</td>
+                            </tr>
+                        )
+                    }
+                </tbody>
+            </table>
         </div>
     )
 }
