@@ -1,6 +1,7 @@
 import {useState, useEffect} from 'react'
 import {Table} from 'react-bootstrap'
 import './App.css';
+import Student from "./Student";
 function App() {
     const employees = ["Rina", "Pratama", "Prasetyawati", "Irwanto", "Wibowo"]
 
@@ -34,43 +35,11 @@ function App() {
     return (
         <div className="App">
             <h1>List With Nested Array</h1>
-            <Table striped bordered>
-                <thead>
-                    <th>Number</th>
-                    <th>Name</th>
-                    <th>Contact</th>
-                    <th>Address</th>
-                </thead>
-                <tbody>
-                {
-                    students.map((item, i) =>
-                        <tr key={i}>
-                            <td>{i + 1}</td>
-                            <td>{item.name}</td>
-                            <td>{item.contact}</td>
-                            <td>
-                                <Table>
-                                    <thead>
-                                        <th>Provinsi</th>
-                                        <th>Kabupaten</th>
-                                    </thead>
-                                    <tbody>
-                                        {
-                                            item.address.map(data =>
-                                                <tr>
-                                                    <td>{data.province}</td>
-                                                    <td>{data.distric}</td>
-                                                </tr>
-                                            )
-                                        }
-                                    </tbody>
-                                </Table>
-                            </td>
-                        </tr>
-                    )
-                }
-                </tbody>
-            </Table>
+            {
+                students.map((item, i) =>
+                    <Student item={item} />
+                )
+            }
         </div>
     )
 }

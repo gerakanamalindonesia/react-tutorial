@@ -1,14 +1,40 @@
-function Student({name, email, address}) {
+import {Table} from "react-bootstrap";
+
+function Student(props) {
     return (
-        <div style={{margin: "10px 20px"}}>
-            <div style={{backgroundColor: "lightseagreen", padding: "10px", marginBottom: "15px"}}>
-                <h3>Biodata</h3>
-                Nama : {name} <br />
-                Email : {email} <br />
-                Alamat : {address.province} <br />
-                Warga Negara : {address.country}
-            </div>
-        </div>
+        <Table striped bordered>
+            <thead>
+            <th>Number</th>
+            <th>Name</th>
+            <th>Contact</th>
+            <th>Address</th>
+            </thead>
+            <tbody>
+                <tr key={props.i}>
+                    <td>{props.i + 1}</td>
+                    <td>{props.item.name}</td>
+                    <td>{props.item.contact}</td>
+                    <td>
+                        <Table>
+                            <thead>
+                                <th>Provinsi</th>
+                                <th>Kabupaten</th>
+                            </thead>
+                            <tbody>
+                                {
+                                    props.item.address.map(data =>
+                                        <tr>
+                                            <td>{data.province}</td>
+                                            <td>{data.distric}</td>
+                                        </tr>
+                                    )
+                                }
+                            </tbody>
+                        </Table>
+                    </td>
+                </tr>
+            </tbody>
+        </Table>
     )
 }
 
