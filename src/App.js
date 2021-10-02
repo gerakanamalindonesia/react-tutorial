@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react'
+import {Table} from 'react-bootstrap'
 import './App.css';
-import Employee from "./Employee";
 function App() {
     const employees = ["Rina", "Pratama", "Prasetyawati", "Irwanto", "Wibowo"]
 
@@ -13,8 +13,8 @@ function App() {
 
     return (
         <div className="App">
-            <h1>Students : </h1>
-            <table border='1'>
+            <h1>List With Bootstrap Tale</h1>
+            <Table striped bordered>
                 <thead>
                     <th>Name</th>
                     <th>Address</th>
@@ -22,16 +22,16 @@ function App() {
                 </thead>
                 <tbody>
                     {
-                        students.map(data =>
-                            <tr>
-                                <td>{data.name}</td>
-                                <td>{data.address}</td>
-                                <td>{data.contact}</td>
+                        students.map((item, id) =>
+                            <tr key={id}>
+                                <td>{item.name}</td>
+                                <td>{item.address}</td>
+                                <td>{item.contact}</td>
                             </tr>
                         )
                     }
                 </tbody>
-            </table>
+            </Table>
         </div>
     )
 }
